@@ -18,10 +18,13 @@
   "homepage": "https://github.com/blinkmobile/policy-parser",
   "files": [
     "policy.js",
-    "LICENSE"
+    "LICENSE",
+    "schema.json"
   ],
   "devDependencies": {
     "eslint": "^0.10.2",
-    "tape": "^3.0.3"
+    "request": "^2.51.0",
+    "tape": "^3.0.3",
+    "z-schema": "^3.3.0"
   }
 }
