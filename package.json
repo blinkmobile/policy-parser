@@ -19,7 +19,7 @@
   "files": [
     "policy.js",
     "LICENSE",
-    "schema.json"
+    "schema-v1.json"
   ],
   "devDependencies": {
     "eslint": "^0.10.2",

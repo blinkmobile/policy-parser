@@ -4,11 +4,11 @@
 
 var test = require('tape');
 var request = require('request');
-var ZSchema = require("z-schema");
+var ZSchema = require('z-schema');
 
 // our modules
 
-var schema = require('../schema');
+var schema = require('../schema-v1');
 
 var example = {
   statements: [
