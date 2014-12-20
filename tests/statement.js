@@ -28,7 +28,7 @@ test('Statement(): "deny"; "auth:CreateToken"; "brn:auth:token::*"', function (t
     actions: ['auth:CreateToken'],
     resources: ['brn:auth:token::*']
   });
-  t.notOk(s.test('auth:CreateToken', 'brn:auth:token::123'), 'specific BRN fails');
+  t.ok(s.test('auth:CreateToken', 'brn:auth:token::123'), 'specific BRN passes');
   t.notOk(s.test('auth:DeleteToken', 'brn:auth:token::123'), 'different action fails');
   t.notOk(s.test('auth:CreateToken', 'brn:auth:user::123'), 'different BRN type fails');
   t.end();

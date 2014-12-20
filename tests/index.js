@@ -67,3 +67,4 @@ test('parser(example)', function (t) {
 });
 
 require('./statement');
+require('./policy');

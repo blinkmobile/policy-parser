@@ -34,12 +34,9 @@ function Statement(input) {
 /**
  * @param {String} action /^[a-z]+:\w+$/
  * @param {String|BRN} brn the resource that is the target of action
- * @returns {Boolean} true if this statement allows action upon target
+ * @returns {Boolean} true if this statement matches action and target
  */
 Statement.prototype.test = function test(action, brn) {
-  if (this.effect === 'deny') {
-    return false;
-  }
   if (this.actions.indexOf(action) === -1) {
     return false;
   }
