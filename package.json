@@ -2,7 +2,7 @@
   "name": "policy-parser",
   "version": "0.0.1",
   "description": "convenience methods for working with Policy statements",
-  "main": "policy.js",
+  "main": "index.js",
   "scripts": {
     "test": "$(npm bin)/eslint . && node ./tests"
   },
@@ -26,5 +26,8 @@
     "request": "^2.51.0",
     "tape": "^3.0.3",
     "z-schema": "^3.3.0"
+  },
+  "dependencies": {
+    "brn": "git://github.com/blinkmobile/brn#v1.0.0"
   }
 }

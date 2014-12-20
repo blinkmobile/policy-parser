@@ -8,7 +8,12 @@ var ZSchema = require('z-schema');
 
 // our modules
 
+var parse = require('../');
+var Policy = require('../src/policy');
 var schema = require('../schema-v1');
+var Statement = require('../src/statement');
+
+// this module
 
 var example = {
   statements: [
@@ -24,8 +29,6 @@ var example = {
     }
   ]
 };
-
-// this module
 
 test('downloading JSON Schema schema', function (t) {
   var schemaUrl = 'http://json-schema.org/draft-04/schema';
@@ -50,4 +53,15 @@ test('downloading JSON Schema schema', function (t) {
 
     t.end();
   });
+});
+
+test('parser(example)', function (t) {
+  var policy = parse(example);
+  t.ok(policy instanceof Policy, 'Policy instance created');
+  t.ok(Array.isArray(policy.statements), 'policy has statements Array');
+  t.equal(policy.statements.length, 2, 'policy has 2 statements');
+  t.ok(policy.statements.every(function (s) {
+    return s instanceof Statement;
+  }), 'statements are Statement instances');
+  t.end();
 });
