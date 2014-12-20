@@ -23,10 +23,32 @@ function Statement(input) {
   if (Array.isArray(input.resources)) {
     this.resources = input.resources.filter(function (r) {
       return BRN.isBRN(r);
+    }).map(function (r) {
+      return new BRN(r);
     });
   } else {
     this.resources = [];
   }
 }
+
+/**
+ * @param {String} action /^[a-z]+:\w+$/
+ * @param {String|BRN} brn the resource that is the target of action
+ * @returns {Boolean} true if this statement allows action upon target
+ */
+Statement.prototype.test = function test(action, brn) {
+  if (this.effect === 'deny') {
+    return false;
+  }
+  if (this.actions.indexOf(action) === -1) {
+    return false;
+  }
+  if (!brn instanceof BRN) {
+    brn = new BRN(brn);
+  }
+  return this.resources.some(function (r) {
+    return r.test(brn);
+  });
+};
 
 module.exports = Statement;

@@ -65,3 +65,5 @@ test('parser(example)', function (t) {
   }), 'statements are Statement instances');
   t.end();
 });
+
+require('./statement');
