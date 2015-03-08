@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/blinkmobile/policy-parser",
   "files": [
-    "policy.js",
+    "index.js",
+    "src/policy.js",
+    "src/statement.js",
     "LICENSE",
     "schema-v1.json"
   ],
