@@ -66,3 +66,29 @@ test('policy.push({ /* ... */ }): "deny" persists regardless of order', function
   t.notOk(policy.authorises('policy:LinkUser', 'brn:policy:users::*'));
   t.end();
 });
+
+test('policy-default.json: permissions are as expected', function (t) {
+  var policy = new Policy();
+  policy.push.apply(policy, defaultPolicy.statements);
+
+  ['*', '123'].forEach(function (id) {
+    var brn;
+
+    brn = 'brn:policy:policies::' + id;
+    t.notOk(policy.authorises('policy:CreatePolicy', brn), brn);
+    t.notOk(policy.authorises('policy:ReadPolicy', brn), brn);
+    t.notOk(policy.authorises('policy:UpdatePolicy', brn), brn);
+    t.notOk(policy.authorises('policy:DeletePolicy', brn), brn);
+    t.notOk(policy.authorises('policy:LinkPolicy', brn), brn);
+
+    brn = 'brn:policy:tokens::' + id;
+    t.ok(policy.authorises('policy:CreateToken', brn), brn);
+    t.notOk(policy.authorises('policy:LinkToken', brn), brn);
+
+    brn = 'brn:policy:users::' + id;
+    t.ok(policy.authorises('policy:CreateUser', brn), brn);
+    t.notOk(policy.authorises('policy:LinkUser', brn), brn);
+  });
+
+  t.end();
+});

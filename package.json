@@ -30,6 +30,6 @@
     "z-schema": "^3.3.0"
   },
   "dependencies": {
-    "brn": "git://github.com/blinkmobile/brn#v1.0.0"
+    "brn": "git://github.com/blinkmobile/brn#v1.1.0"
   }
 }
