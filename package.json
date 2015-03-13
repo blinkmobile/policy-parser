@@ -1,6 +1,6 @@
 {
   "name": "policy-parser",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "convenience methods for working with Policy statements",
   "main": "index.js",
   "scripts": {

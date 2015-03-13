@@ -5,9 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.1.1] - 2015-03-13
+
 ### Fixed
 
-- `Statement#test()` returns true if BRNs are identical 
+- `Statement#test()` returns true if BRNs are identical
 
 ## [1.1.0] - 2015-03-13
 
