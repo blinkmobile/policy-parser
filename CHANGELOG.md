@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
+## [1.1.0] - 2015-03-13
+
 ### Changed
 
 - `Policy#push()` now also works with plain Objects (as well as Statements)
