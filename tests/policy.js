@@ -48,3 +48,21 @@ test('policy.push({ /* ... */ }): properly instantiates Statements', function (t
   });
   t.end();
 });
+
+test('policy.push({ /* ... */ }): "deny" persists regardless of order', function (t) {
+  var policy = new Policy();
+  policy.push.apply(policy, defaultPolicy.statements);
+  t.notOk(policy.authorises('policy:LinkUser', 'brn:policy:users::*'));
+  // add an "allow" that matches a previous "deny"
+  policy.push({
+    'effect': 'allow',
+    'actions': [
+      'policy:LinkUser'
+    ],
+    'resources': [
+      'brn:policy:users::*'
+    ]
+  });
+  t.notOk(policy.authorises('policy:LinkUser', 'brn:policy:users::*'));
+  t.end();
+});
