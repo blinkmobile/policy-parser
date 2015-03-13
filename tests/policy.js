@@ -9,6 +9,9 @@ var test = require('tape');
 var Policy = require('../src/policy');
 var Statement = require('../src/statement');
 
+var defaultPolicy = require('./policy-default');
+// var defaultPolicyJson = JSON.stringify(defaultPolicy);
+
 // this module
 
 test('Policy(): "auth:ReadToken" both denied and allowed', function (t) {
@@ -35,4 +38,13 @@ test('Policy(): "auth:ReadToken" both denied and allowed', function (t) {
   t.notOk(policy.authorises('auth:DeleteToken', 'brn:auth:user::123'), 'unlisted action fails');
   t.end();
   t.ok(policy.authorises('auth:CreateUser', 'brn:auth:user::123'), 'allowed action passes');
+});
+
+test('policy.push({ /* ... */ }): properly instantiates Statements', function (t) {
+  var policy = new Policy();
+  policy.push.apply(policy, defaultPolicy.statements);
+  policy.statements.forEach(function (stmt, index) {
+    t.ok(stmt instanceof Statement, '[' + index + '] is a Statement');
+  });
+  t.end();
 });

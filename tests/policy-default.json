@@ -1,0 +1,53 @@
+{
+  "statements": [
+    {
+      "effect": "deny",
+      "actions": [
+        "policy:CreatePolicy",
+        "policy:ReadPolicy",
+        "policy:UpdatePolicy",
+        "policy:DeletePolicy",
+        "policy:LinkPolicy"
+      ],
+      "resources": [
+        "brn:policy:policies::*"
+      ]
+    },
+    {
+      "effect": "allow",
+      "actions": [
+        "policy:CreateToken"
+      ],
+      "resources": [
+        "brn:policy:tokens::*"
+      ]
+    },
+    {
+      "effect": "deny",
+      "actions": [
+        "policy:LinkToken"
+      ],
+      "resources": [
+        "brn:policy:tokens::*"
+      ]
+    },
+    {
+      "effect": "allow",
+      "actions": [
+        "policy:CreateUser"
+      ],
+      "resources": [
+        "brn:policy:users::*"
+      ]
+    },
+    {
+      "effect": "deny",
+      "actions": [
+        "policy:LinkUser"
+      ],
+      "resources": [
+        "brn:policy:users::*"
+      ]
+    }
+  ]
+}

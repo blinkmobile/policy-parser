@@ -1,5 +1,11 @@
 'use strict';
 
+// our modules
+
+var Statement = require('./statement');
+
+// this module
+
 function Policy() {
   this.statements = [];
   this.actions = {};
@@ -13,18 +19,20 @@ Policy.prototype.push = function push() {
   var me = this;
   var i, iLength = arguments.length;
   var a, aLength;
-  var statement;
+  var stmt;
   var action;
   for (i = 0; i < iLength; i++) {
-    statement = arguments[i];
-    aLength = statement.actions.length;
+    stmt = arguments[i];
+    stmt = stmt instanceof Statement ? stmt : new Statement(stmt);
+    arguments[i] = stmt;
+    aLength = stmt.actions.length;
     for (a = 0; a < aLength; a++) {
-      action = statement.actions[a];
+      action = stmt.actions[a];
       me.actions[action] = me.actions[action] || [];
-      if (statement.effect === 'allow') {
-        me.actions[action].push(statement);
+      if (stmt.effect === 'allow') {
+        me.actions[action].push(stmt);
       } else {
-        me.actions[action].unshift(statement);
+        me.actions[action].unshift(stmt);
       }
     }
   }
