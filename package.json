@@ -24,10 +24,10 @@
     "schema-v1.json"
   ],
   "devDependencies": {
-    "eslint": "^0.10.2",
-    "request": "^2.51.0",
-    "tape": "^3.0.3",
-    "z-schema": "^3.3.0"
+    "eslint": "^0.16.2",
+    "request": "^2.53.0",
+    "tape": "^3.5.0",
+    "z-schema": "^3.6.1"
   },
   "dependencies": {
     "brn": "git://github.com/blinkmobile/brn#v1.1.0"

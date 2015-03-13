@@ -39,16 +39,16 @@ test('downloading JSON Schema schema', function (t) {
 
     validator.setRemoteReference(schemaUrl, JSON.parse(body));
 
-    t.test('example passes Policy schema', function (t) {
-      t.ok(validator.validate(example, schema), 'example is valid');
-      t.notOk(validator.getLastErrors(), 'no validation errors');
-      t.end();
+    t.test('example passes Policy schema', function (tt) {
+      tt.ok(validator.validate(example, schema), 'example is valid');
+      tt.notOk(validator.getLastErrors(), 'no validation errors');
+      tt.end();
     });
 
-    t.test('empty Object fails Policy schema', function (t) {
-      t.notOk(validator.validate({}, schema), 'Object is invalid');
-      t.ok(validator.getLastErrors(), 'validation errors');
-      t.end();
+    t.test('empty Object fails Policy schema', function (tt) {
+      tt.notOk(validator.validate({}, schema), 'Object is invalid');
+      tt.ok(validator.getLastErrors(), 'validation errors');
+      tt.end();
     });
 
     t.end();
