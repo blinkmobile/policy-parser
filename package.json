@@ -4,7 +4,7 @@
   "description": "convenience methods for working with Policy statements",
   "main": "index.js",
   "scripts": {
-    "test": "$(npm bin)/eslint . && node ./tests"
+    "test": "$(npm bin)/eslint . && $(npm bin)/istanbul cover ./tests"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   ],
   "devDependencies": {
     "eslint": "^0.16.2",
+    "istanbul": "^0.3.7",
     "request": "^2.53.0",
     "tape": "^3.5.0",
     "z-schema": "^3.6.1"
